@@ -1,3 +1,6 @@
+import datetime
+import time
+
 import urllib3
 from openpyxl.workbook import Workbook
 from selenium import webdriver
@@ -45,5 +48,11 @@ def save_data(data_dict: dict):
     workbook.save(filename)
 
 if __name__ == "__main__":
-    data = scrape_data()
-    save_data(data)
+    current_time = datetime.datetime.now().strftime("%H:%M")
+    for i in range(100):
+        if current_time >= "13:00":
+            data = scrape_data()
+            save_data(data)
+            print("Data was gathered successfully!")
+            break
+        time.sleep(300)
