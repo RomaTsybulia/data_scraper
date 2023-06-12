@@ -32,7 +32,6 @@ def save_data_to_sqlite(data):
     data_entry = DataEntry(date=date, data=data_json)
     session.add(data_entry)
     session.commit()
-
     session.close()
 
 
